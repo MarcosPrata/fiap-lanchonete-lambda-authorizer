@@ -1,0 +1,19 @@
+---
+name: 📦🚀 Deploy Production
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  build-staging:
+    uses: ./.github/workflows/main.yml
+    with:
+      ecr_repository_uri: 000000000000.dkr.ecr.us-east-1.amazonaws.com/fiap-lanchonete-lambda-authorizer-prd
+      github_environment: production
+      aws_region: us-east-1
+      lambda_name: fiap-lanchonete-lambda-authorizer
+    secrets:
+      ECR_AWS_ACCESS_KEY_ID: ${{ secrets.COMPONENTES_ECR_PRD_AWS_ACCESS_KEY_ID }}
+      ECR_AWS_SECRET_ACCESS_KEY: ${{ secrets.COMPONENTES_ECR_PRD_AWS_SECRET_ACCESS_KEY }}

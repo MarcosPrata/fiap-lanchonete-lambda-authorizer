@@ -1,0 +1,19 @@
+{
+  "name": "fiap-lanchonete-lambda-authorizer",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.1288.0",
+    "axios": "^0.21.1",
+    "pg": "^8.9.0"
+  },
+  "scripts": {
+    "localstack:run": "docker-compose up --build localstack",
+    "localstack:lambda:create": "bash scripts/localstack.sh"
+  },
+  "engines": {
+    "npm": "6.14.16"
+  }
+}

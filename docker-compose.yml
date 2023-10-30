@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  localstack:
+    container_name: "localstack_fiap_lanchonete"
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "${EDGE_PORT-4566}:4566"
+    environment:
+      - SERVICES=lambda,apigateway
+      - AWS_ACCESS_KEY_ID=dummyaccess
+      - AWS_SECRET_ACCESS_KEY=dummysecret
+      - AWS_DEFAULT_REGION=us-east-1
+      - DEFAULT_REGION=us-east-1
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - LAMBDA_EXECUTOR=docker
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DEBUG=0
+      - LS_LOG=trace
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
