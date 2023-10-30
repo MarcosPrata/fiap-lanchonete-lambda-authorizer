@@ -1,5 +1,9 @@
 # fiap-lanchonete-lambda-authorizer
 
+![Turma](https://img.shields.io/badge/👨🏻‍🏫_Turma-SOAT2-blue?style=for-the-badge)
+![Equipe](https://img.shields.io/badge/🧑🏻‍💻_equipe-20-blue?style=for-the-badge)
+
+
 [![Javascript](https://img.shields.io/badge/Javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)](https://www.javascript.com/)
 [![NodeJs](https://img.shields.io/badge/Node.js-%23339933.svg?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
 
@@ -51,3 +55,34 @@ Para a função lambda funcionar corretamente ela precisa das seguintes variáve
 >**DB_PASSWORD** → default: 'postgres'
 >
 >**DB_NAME** → default: 'lanchonete'
+
+## 🎓 Integrantes / Devs
+
+> Nome: Marcos Henrique Prata Junior
+>
+> Matrícula: RM349949
+>
+> [![Linkedin](https://img.shields.io/badge/Linkedin-0E76A8.svg?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/marcos-henrique-prata-junior/)
+> [![GitHub](https://img.shields.io/badge/GitHub-333.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/MarcosPrata)
+
+> Nome: Marcos Moreira
+>
+> Matrícula: RM349544
+>
+> [![Linkedin](https://img.shields.io/badge/Linkedin-0E76A8.svg?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/moreira-dev/)
+> [![GitHub](https://img.shields.io/badge/GitHub-333.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/MarcosPotato)
+
+> Nome: Marcelo Gonçalves de Barros
+>
+> Matrícula: RM349535
+>
+> [![Linkedin](https://img.shields.io/badge/Linkedin-0E76A8.svg?style=for-the-badge&logo=Linkedin&logoColor=white)]()
+> [![GitHub](https://img.shields.io/badge/GitHub-333.svg?style=for-the-badge&logo=GitHub&logoColor=white)]()
+
+
+> Nome: Henrique de Paula Leite
+>
+> Matrícula: RM350046
+>
+> [![Linkedin](https://img.shields.io/badge/Linkedin-0E76A8.svg?style=for-the-badge&logo=Linkedin&logoColor=white)]()
+> [![GitHub](https://img.shields.io/badge/GitHub-333.svg?style=for-the-badge&logo=GitHub&logoColor=white)]()
