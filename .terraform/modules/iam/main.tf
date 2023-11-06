@@ -1,4 +1,4 @@
-resource "aws_iam_role" "role" {
+resource "aws_iam_role" "lambda_role" {
   name = "${var.project_name}-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -38,5 +38,5 @@ resource "aws_iam_policy" "policy" {
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
   policy_arn = aws_iam_policy.policy.arn
-  role = aws_iam_role.role.name
+  role = aws_iam_role.lambda_role.name
 }

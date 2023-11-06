@@ -5,24 +5,31 @@ module "iam" {
   tags = var.tags
 }
 
-module "vpc" {
-  source = "../vpc"
-  project_name = var.project_name
-  region = var.aws_region
-  tags = var.tags
+# module "vpc" {
+#   source = "../vpc"
+#   project_name = var.project_name
+#   region = var.aws_region
+#   tags = var.tags
+# }
+
+data "archive_file" "lambda_package" {
+  type = "zip"
+  source_file = "../index.js"
+  output_path = "lambda.zip"
 }
 
 resource "aws_lambda_function" "lambda" {
   function_name    = "${var.project_name}-lambda-${var.app_env}"
   filename         = "lambda.zip"
-  source_code_hash = filebase64sha256("lambda.zip")
+  # source_code_hash = filebase64sha256("lambda.zip")
+  source_code_hash = data.archive_file.lambda_package.output_base64sha256
   handler          = "index.handler"
   role             = module.iam.iam_lambda_role
   runtime          = "nodejs14.x"
-  vpc_config {
-    subnet_ids = [module.vpc.subnet_id]
-    security_group_ids = [module.vpc.security_group_id]
-  }
+  # vpc_config {
+  #   subnet_ids = [module.vpc.subnet_id]
+  #   security_group_ids = [module.vpc.security_group_id]
+  # }
 }
 
 
