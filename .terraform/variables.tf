@@ -1,6 +1,6 @@
 variable "project_name" {
   type        = string
-  default     = "lanchonete"
+  default     = "lanchonete-lambda-authorizer"
   description = "Nome do projeto"
 }
 
