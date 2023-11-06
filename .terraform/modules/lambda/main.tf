@@ -14,8 +14,8 @@ module "vpc" {
 
 resource "aws_lambda_function" "lambda" {
   function_name    = "${var.project_name}-lambda-${var.app_env}"
-  filename         = "lambda_function_payload.zip"
-  source_code_hash = filebase64sha256("lambda_function_payload.zip")
+  filename         = "lambda.zip"
+  source_code_hash = filebase64sha256("lambda.zip")
   handler          = "index.handler"
   role             = module.iam.iam_lambda_role
   runtime          = "nodejs14.x"
