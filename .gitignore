@@ -1,3 +1,18 @@
+# Terraform Files
+.terraform/.terraform
+.terraform/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+#Script Files
 /.idea/
 node_modules
 .DS_Store
