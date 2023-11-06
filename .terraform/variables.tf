@@ -25,3 +25,18 @@ variable "aws_secret_key" {
   type        = string
   description = "Chave de acesso secreta de um usário com acesso para realizar as alterações necessárias"
 }
+
+variable "lambda_dir" {
+  type    = string
+  default = "../"
+}
+
+variable "lambda_dir_exclude_files" {
+  type    = list(string)
+  default = [
+    ".terraform",
+    ".github",
+    "docs",
+    "scripts",
+  ]
+}
