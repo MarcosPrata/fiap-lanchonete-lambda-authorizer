@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-prod:
+  build-prd:
     uses: ./.github/workflows/main.yml
     with:
       app_env: prd

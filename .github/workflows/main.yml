@@ -50,11 +50,8 @@ jobs:
 
     - name: Create Lambda Package
       run: |
-        mkdir lambda_package
-        cp -r ../ lambda_package
-        zip -r lambda_package.zip lambda_package
-        rm -rf lambda_package
+        zip -r lambda.zip .
 
     - name: Upload Lambda Package
       run: |
-        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --zip-file fileb://lambda_package.zip
+        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --zip-file fileb://lambda.zip

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-prod:
+  build-stg:
     uses: ./.github/workflows/main.yml
     with:
       app_env: stg
