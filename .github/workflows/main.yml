@@ -21,8 +21,6 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
-      AWS_ACCOUNT_ID:
-        required: true
 
 env:
   SH8: $(echo ${GITHUB_SHA} | cut -c1-8)
@@ -50,35 +48,13 @@ jobs:
       run: |
         echo "SH8=$(echo ${{ env.SH8 }})" >> $GITHUB_ENV
 
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: |
-          ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{inputs.aws_region}}.amazonaws.com/${{ inputs.ecr_repository_name }}:${{ env.SH8 }}
-          ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{inputs.aws_region}}.amazonaws.com/${{ inputs.ecr_repository_name }}:latest
-
-  sync:
-    runs-on: ubuntu-latest
-    env:
-      STAGE: ${{ inputs.app_env }}
-    environment:
-      name: ${{ inputs.app_env }}
-    needs: build
-    steps:
-
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ inputs.aws_region }}
-
-    - name: Get short commit
+    - name: Create Lambda Package
       run: |
-        echo "SH8=$(echo ${{ env.SH8 }})" >> $GITHUB_ENV
-    
-    - name: Changed the lambda image
+        mkdir lambda_package
+        cp -r ./ ./lambda_package
+        zip -r lambda_package.zip ./lambda_package
+        rm -rf ./lambda_package
+
+    - name: Upload Lambda Package
       run: |
-        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --image-uri ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{inputs.aws_region}}.amazonaws.com/${{ inputs.ecr_repository_name }}:${{ env.SH8 }}
+        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --zip-file fileb://lambda_package.zip
