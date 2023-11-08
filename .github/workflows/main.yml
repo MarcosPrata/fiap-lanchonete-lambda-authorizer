@@ -81,4 +81,4 @@ jobs:
     
     - name: Changed the lambda image
       run: |
-        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --image-uri $ECR_REGISTRY/${{ inputs.ecr_repository_name }}:${{ env.SH8 }}
+        aws lambda update-function-code --function-name  ${{ inputs.lambda_name }} --image-uri ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{inputs.aws_region}}.amazonaws.com/${{ inputs.ecr_repository_name }}:${{ env.SH8 }}
