@@ -13,7 +13,8 @@ jobs:
       app_env: prd
       aws_region: us-east-1
       lambda_name: lanchonete-lambda-authorizer-prd
-      ecr_repository: lanchonete-lambda-authorizer-prd-repository
+      ecr_repository_name: lanchonete-lambda-authorizer-prd-repository
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
