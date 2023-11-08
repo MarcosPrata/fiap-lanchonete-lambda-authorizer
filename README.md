@@ -19,6 +19,8 @@ Essa lambda é responsável por autenticar o usuário, recebe o cpf do usuário 
 
 Os seguintes repositórios também fazem parte desse projeto:
 
+> [fiap-lanchonete-terraform](https://github.com/MarcosPrata/fiap-lanchonete-terraform) - Reponsável por provisionar a infra na AWS.
+
 > [fiap-lanchonete-api](https://github.com/MarcosPrata/fiap-lanchonete-api) - API core responsável por registrar e acompanhar pedidos e usuários.
 
 > [fiap-lanchonete-api-gateway](https://github.com/MarcosPrata/fiap-lanchonete-lambda-authorizer) - Reponsável por autenticar e autorizar as chamadas requests dos usuários que passarem pelo API Gateway.

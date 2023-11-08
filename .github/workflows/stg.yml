@@ -1,19 +1,19 @@
 ---
-name: 📦🚀 Deploy Lambda Authorizer Production
+name: 📦🚀 Deploy Lambda Authorizer Staging
 on:
   push:
     branches:
-      - main
+      - develop
   workflow_dispatch:
   
 jobs:
   build-prod:
     uses: ./.github/workflows/main.yml
     with:
-      app_env: prd
+      app_env: stg
       aws_region: us-east-1
       lambda_name: lanchonete-lambda-authorizer
-      ecr_repository: lanchonete-lambda-authorizer-prd
+      ecr_repository: lanchonete-lambda-authorizer-stg
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
