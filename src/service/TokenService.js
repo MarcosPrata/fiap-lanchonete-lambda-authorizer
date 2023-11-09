@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 
-function generateToken(cpf) {
+function generateToken(cpf, type = "anonymous") {
   const jwt_secret = "jwt_secret"
 
   const HMACSHA256 = (stringToSign, secret) => {
@@ -17,7 +17,7 @@ function generateToken(cpf) {
   const encodedHeaders = Buffer.from(JSON.stringify(header)).toString('base64');
 
   const claims = {
-    "role": "admin",
+    "role": type,
     "cpf": cpf
   }
 

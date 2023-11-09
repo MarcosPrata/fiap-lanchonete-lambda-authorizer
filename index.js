@@ -1,5 +1,8 @@
+const { config } = require("dotenv")()
+config()
+const { dbClient } = require("./src/libs/dbClient")
 const { handleException } = require("./src/exception/ErrorHandler");
-//const { existsByCPF } = require("./src/service/UserService");
+const { existsByCPF } = require("./src/service/UserService");
 const { generateToken } = require("./src/service/TokenService");
 
 /**
@@ -8,9 +11,14 @@ const { generateToken } = require("./src/service/TokenService");
  */
 const handler = async (payload) => {
   try {
+    await dbClient.connect()
     const body = JSON.parse(payload.body)
 
-    const accessToken = generateToken(body.cpf)
+    const user = await existsByCPF(body.cpf)
+
+    const accessToken = user 
+      ? generateToken(user.cpf, "authenticated")
+      : generateToken(body.cpf)
 
     const userToken = { "access_token": accessToken }
 
@@ -22,6 +30,8 @@ const handler = async (payload) => {
     };
   } catch (exception) {
     return handleException(exception);
+  } finally{
+    await dbClient.end()
   }
 }
 

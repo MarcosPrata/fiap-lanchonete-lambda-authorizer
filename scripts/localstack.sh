@@ -13,9 +13,9 @@ yarn install
 echo
 echo "// Iniciando recursos do localstack --------------------------" 
 
-echo
-echo "🟢 Zipando a lambda: zip -r lambda.zip ."
-nohup zip -r lambda.zip .
+# echo
+# echo "🟢 Zipando a lambda: zip -r lambda.zip ."
+# nohup zip -r lambda.zip .
 
 function fail() {
     echo $2

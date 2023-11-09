@@ -1,17 +1,9 @@
-const { Client } = require('pg');
-let sql = ''
-
-
-const dbClient = new Client({
-	host: process.env.DB_HOST || 'localhost',
-	port:process.env.DB_PORT ||  5432,
-	user: process.env.DB_USER || 'postgres',
-	password: process.env.DB_PASSWORD || 'postgres',
-	database: process.env.DB_NAME || 'lanchonete'
-});
+const { dbClient } = require("../libs/dbClient")
 
 async function findUserByCPF(cpf) {
-  return null
+	const user = await dbClient.query(`SELECT * FROM customers WHERE cpf == '${cpf}'`)
+
+  	return user.rows
 }
 
 module.exports = { findUserByCPF };
